@@ -33,14 +33,14 @@ public class ReservationService {
     public long create(Reservation reservation) {
         ReservationValidator.validateReservation(reservation);
 
-        List<DayAvailability> availabilities = createAvailabilties(reservation);
+        List<DayAvailability> availabilities = createAvailabilities(reservation);
 
         this.dayAvailabilityService.updateAvailability(availabilities);
 
         return this.reservationRepository.save(reservation).getId();
     }
 
-    private List<DayAvailability> createAvailabilties(Reservation reservation) {
+    private List<DayAvailability> createAvailabilities(Reservation reservation) {
         List<DayAvailability> availabilities = new ArrayList<DayAvailability>();
         DayAvailability availability;
         LocalDate availabilityDate = LocalDate.parse(reservation.getStartDate());
@@ -58,7 +58,7 @@ public class ReservationService {
         Reservation reservation = this.get(reservationId);
         reservation.setNumberOfPeople(-reservation.getNumberOfPeople());
 
-        List<DayAvailability> availabilities = createAvailabilties(reservation);
+        List<DayAvailability> availabilities = createAvailabilities(reservation);
 
         this.dayAvailabilityService.updateAvailability(availabilities);
 
@@ -78,8 +78,8 @@ public class ReservationService {
         Reservation oldReservation = this.get(reservationId);
         oldReservation.setNumberOfPeople(-oldReservation.getNumberOfPeople());
 
-        List<DayAvailability> newAvailabilities = createAvailabilties(reservation);
-        List<DayAvailability> oldAvailabilities = createAvailabilties(oldReservation);
+        List<DayAvailability> newAvailabilities = createAvailabilities(reservation);
+        List<DayAvailability> oldAvailabilities = createAvailabilities(oldReservation);
 
         this.dayAvailabilityService.updateAvailability(
                 this.dayAvailabilityService.mergeAvailabilities(oldAvailabilities, newAvailabilities));

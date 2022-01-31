@@ -21,6 +21,7 @@ public class DayAvailabilityService {
     @Autowired
     private DayAvailabilityRepository dayAvailabilityRepository;
 
+
     public List<DayAvailability> get(LocalDate startDate, LocalDate endDate) {
         return this.dayAvailabilityRepository.findByDayBetween(startDate.toString(), endDate.toString());
     }

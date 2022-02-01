@@ -9,8 +9,10 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.json.JSONObject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -47,6 +49,7 @@ class DemoApplicationTests {
 	TestRestTemplate restTemplate = new TestRestTemplate();
 	HttpHeaders headers = new HttpHeaders();
 
+
 	@Test
 	public void testBasicCreateAndRetrieveReservation() throws Exception {
 		Reservation reservation = new Reservation();
@@ -72,6 +75,7 @@ class DemoApplicationTests {
 		assertEquals(reservationId, body.get("id"));
 	}
 
+
 	@Test
 	public void testMultithreadedReservationCreation() throws InterruptedException {
 		TestUtil.runMultithreaded(new Runnable() {
@@ -91,6 +95,7 @@ class DemoApplicationTests {
 		}, RESERVATION_THREADS);
 
 	}
+
 
 	@Test
 	public void testOccupancyLimit() throws Exception {

@@ -5,3 +5,5 @@ Added JUnit tests in DemoApplicationTests.java for:
 * Simple reservation creation and retrieval.
 * Multiple thread reservation creation.
 * Checking for availability maximun.
+
+A document to explain technical decisions is available here ![alt text](https://drive.google.com/file/d/1cAppMMWAhbQdLPTUuvt5oAZJIomzJyaS/view?usp=sharing)
